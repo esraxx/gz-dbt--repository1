@@ -1,8 +1,9 @@
 SELECT
-  s.products_id,                     -- sadece bir tablodan alıyoruz
-  s.quantity,
+  s.products_id,                    
+  s.date_date,
   s.revenue,
-  p.product_name,                    -- örnek olarak product tablosundan gerekli sütunları ekle
+  s.orders_id,
+  s.quantity,
   p.purchase_price,
   s.quantity * p.purchase_price AS purchase_cost,
   ROUND(s.revenue - (s.quantity * p.purchase_price), 2) AS margin
