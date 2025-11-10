@@ -1,0 +1,16 @@
+name: dbt-esra-aydin
+version: 1.0
+config-version: 2
+
+profile: dbt-esra-aydin
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  dbt-esra-aydin:
+    +materialized: table      # ✅ Tüm modelleri table yap
+    staging:
+      +materialized: view     # (opsiyonel) staging'i view olarak bırak
+
+
