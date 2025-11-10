@@ -6,10 +6,51 @@ sources:
     tables:
       - name: sales
         identifier: raw_gz_sales
-        description: "Satış tablosu"
+        description: Satış verileri
       - name: product
         identifier: raw_gz_product
-        description: "Ürün tablosu"
+        description: Ürün verileri
       - name: ship
         identifier: raw_gz_ship
-        description: "Yükleme tablosu"
+        description: Kargo verileri
+
+ 
+  
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: "Google reklam verileri"
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: "Microsoft Bing reklam verileri"
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: "Criteo kampanya verileri"
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: "Facebook reklam verileri"
+
+models:
+  - name: int_campaigns
+    description: "Tüm kampanyalardan gelen birleşik veriler"
+    columns:
+      - name: paid_source
+        tests:
+          - not_null
+      - name: campaign_name
+        tests:
+          - not_null
+
+  - name: finance_campaigns_day
+    description: "Finansal göstergeler ve reklam maliyetleri birleştirilmiş tablo"
+    columns:
+      - name: ads_margin
+        description: "operational_margin - ads_cost"
+        tests:
+          - not_null
+      - name: average_basket
+        description: "Her gün için ortalama sepet tutarı"
+        tests:
+          - not_null
